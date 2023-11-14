@@ -11,17 +11,18 @@ class Point:
 
 class Vector:
 
-	def __init__(self, arg):
-		if isinstance(arg, Point):
+	def __init__(self, data, color = None):
+		if isinstance(data, Point):
 			self.coords = [
-				np.cos(arg[0]) * np.cos(arg[1]),
-				np.sin(arg[0]) * np.cos(arg[1]),
-				np.sin(arg[1])
+				np.cos(data[0]) * np.cos(data[1]),
+				np.sin(data[0]) * np.cos(data[1]),
+				np.sin(data[1])
 				]
-		elif isinstance(arg, list):
-			self.coords = np.array(arg)
-		elif isinstance(arg, np.ndarray):
-			self.coords = arg.copy()
+		elif isinstance(data, list):
+			self.coords = np.array(data)
+		elif isinstance(data, np.ndarray):
+			self.coords = data.copy()
+		self.color = "black" if color is None else color
 
 	def __getitem__(self, idx):
 		return self.coords[idx]
@@ -84,6 +85,7 @@ class Scene:
 		ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
 		ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
 		ax._axis3don = False
+		ax.set_aspect("equal");
 		ax.view_init(elev=45., azim=15)
 		self.__plot_axes()
 		self.__plot_objects()
@@ -149,4 +151,4 @@ class Scene:
 		x = np.linspace(0, gvec[0], 100)
 		y = np.linspace(0, gvec[1], 100)
 		z = np.linspace(0, gvec[2], 100)
-		self.axes.plot3D(x, y, z, color = "black")
+		self.axes.plot3D(x, y, z, color = gvec.color)
