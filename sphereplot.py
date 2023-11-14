@@ -59,7 +59,7 @@ class Meridian:
 	def __init__(self, lng):
 		self.lng = lng
 
-class Equatorial:
+class Parallel:
 
 	def __init__(self, lat):
 		self.lat = lat
@@ -112,8 +112,8 @@ class Scene:
 	def __plot_object(self, gobj):
 		if isinstance(gobj, Meridian):
 			self.__plot_meridian(gobj)
-		elif isinstance(gobj, Equatorial):
-			self.__plot_equatorial(gobj)
+		elif isinstance(gobj, Parallel):
+			self.__plot_Parallel(gobj)
 		elif isinstance(gobj, GreatCircleArc):
 			self.__plot_arc(gobj)
 		elif isinstance(gobj, Vector):
@@ -127,7 +127,7 @@ class Scene:
 		z = np.sin(latv)
 		self.axes.scatter(x, y, z, s = 0.1, color = "darkgray")
 
-	def __plot_equatorial(self, gobj):
+	def __plot_Parallel(self, gobj):
 		lngv = np.linspace(0, 2 * np.pi, 100)
 		latv = gobj.lat
 		x = np.cos(lngv) * np.cos(latv)

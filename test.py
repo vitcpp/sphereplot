@@ -2,11 +2,11 @@ from sphereplot import *
 
 scene = Scene()
 
-scene.add(Equatorial(0))
-scene.add(Equatorial(1))
-scene.add(Equatorial(np.pi/2))
-scene.add(Equatorial(-1))
-scene.add(Equatorial(-np.pi/2))
+scene.add(Parallel(0))
+scene.add(Parallel(1))
+scene.add(Parallel(np.pi/2))
+scene.add(Parallel(-1))
+scene.add(Parallel(-np.pi/2))
 
 for lng in np.linspace(0, 2* np.pi, 16):
 	scene.add(Meridian(lng))
