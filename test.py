@@ -2,7 +2,7 @@ from sphereplot import *
 
 fig = plt.figure(figsize = (5, 5))
 
-sphere = Sphere(fig, rect = [0, 0, 1, 1])
+sphere = Sphere(fig, rect = [0, 0, 1, 1], camera = (0, 0))
 
 sphere.parallel(0)
 sphere.parallel(1)
@@ -21,6 +21,6 @@ sphere.great_circle_arc(0, 1, 1, 1, color = "yellow")
 sphere.great_circle_arc(1, 1, 1, 0)
 sphere.great_circle_arc(1, 0, 0, 0)
 
-sphere.camera(35, 45)
+#sphere.camera(35, 45)
 
 plt.show()

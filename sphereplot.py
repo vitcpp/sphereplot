@@ -61,7 +61,7 @@ class Parallel:
 
 class Sphere:
 
-	def __init__(self, fig, rect):
+	def __init__(self, fig, rect, camera = None):
 		self.fig = fig
 		self.axes = self.fig.add_axes(projection = "3d", rect = rect)
 		self.axes.grid(False)
@@ -74,7 +74,10 @@ class Sphere:
 		self.axes.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
 		self.axes._axis3don = False
 		self.axes.set_aspect("equal");
-		self.axes.view_init(elev=45., azim=15)
+		if camera is None:
+			self.axes.view_init(elev=45., azim=15)
+		else:
+			self.axes.view_init(camera[0], camera[1])
 		self.__plot_axes()
 
 	def camera(self, elev, azim):
