@@ -59,7 +59,7 @@ class Parallel:
 	def __init__(self, lat):
 		self.lat = lat
 
-class Scene:
+class Sphere:
 
 	def __init__(self, fig, rect):
 		self.fig = fig
