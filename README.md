@@ -1,3 +1,3 @@
 # sphereplot
 
-The library for plotting on the spherical surface
+The library for plotting sketches on the spherical surface
