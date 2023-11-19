@@ -32,3 +32,9 @@ class Vector:
 		norm = np.sqrt(self[0] ** 2 + self[1] ** 2 + self[2] ** 2)
 		coords = self.coords / norm
 		return Vector(coords)
+
+	def points(self, num : int):
+		x = np.linspace(0, self[0], num)
+		y = np.linspace(0, self[1], num)
+		z = np.linspace(0, self[2], num)
+		return x, y, z

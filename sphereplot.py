@@ -63,36 +63,18 @@ class Sphere:
 			self.__plot_vector(gobj)
 
 	def __plot_meridian(self, gobj, **kwargs):
-		lngv = gobj.lng
-		latv = np.linspace(-np.pi/2, np.pi/2, 100)
-		x = np.cos(lngv) * np.cos(latv)
-		y = np.sin(lngv) * np.cos(latv)
-		z = np.sin(latv)
+		x, y, z = gobj.points(100)
 		self.axes.scatter(x, y, z, **kwargs)
 
 	def __plot_parallel(self, gobj):
-		lngv = np.linspace(0, 2 * np.pi, 100)
-		latv = gobj.lat
-		x = np.cos(lngv) * np.cos(latv)
-		y = np.sin(lngv) * np.cos(latv)
-		z = np.sin(latv)
+		x, y, z = gobj.points(200)
 		self.axes.scatter(x, y, z, s = 0.1, color = "darkgray")
 
 	def __plot_arc(self, garc, **kwargs):
-		v1 = Vector(garc[0])
-		v2 = Vector(garc[1])
-		v3 = v1.cross_product(v2)
-		v4 = v3.cross_product(v2).normalized()
-		dp = -np.arccos(v1.dot_product(v2))
-		t = np.linspace(0, dp, 1000)
-		x = np.cos(t) * v2[0] + np.sin(t) * v4[0]
-		y = np.cos(t) * v2[1] + np.sin(t) * v4[1]
-		z = np.cos(t) * v2[2] + np.sin(t) * v4[2]
+		x, y, z = garc.points(100)
 		k = { "color" : "red", "s" : 0.1 } | kwargs
 		self.axes.scatter(x, y, z, **k)
 
 	def __plot_vector(self, gvec : Vector, **kwargs):
-		x = np.linspace(0, gvec[0], 100)
-		y = np.linspace(0, gvec[1], 100)
-		z = np.linspace(0, gvec[2], 100)
+		x, y, z = gvec.points(2)
 		self.axes.plot3D(x, y, z, **kwargs)
